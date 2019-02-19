@@ -1,2 +1,2 @@
 # Virtual Pet
-This repository contains code for a virtual pet. A pet can be created, and named. The user can then use the functionality to keep the pet alive, by feeding it and giving it exercise.
+This repository contains code for the full lifecycle of a virtual pet. Using the functionality in this repository the user can create a new pet and name it. The pet will age over time, and has a maximum life of 30 days. As the pet gets older, it will get hungrier and less fit. By talking to your pet, the user can find out if it is hungry or needs walking. The user can then feed it or walk it. If the pet gets too hungry or unfit, then it will die.
