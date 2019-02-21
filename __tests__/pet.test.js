@@ -26,7 +26,7 @@ describe('growUp', () => {
     })
 })
 
-describe('getting older, getting hungrier', () => {
+describe('getting older, getting unhealthier', () => {
     let pet;
 
     beforeEach(() => {
