@@ -3,7 +3,7 @@ const { Pet } = require('../src/pet');
 describe('constructor', () => {
     
     let pet = new Pet('Fido');
-    console.log(pet.name);
+
     it('returns an object', () => {
         expect(pet).toBeInstanceOf(Object);
     })
@@ -11,9 +11,17 @@ describe('constructor', () => {
     it('pet has a name', () => {
         expect(pet.name).toEqual('Fido');
     }) 
+})
 
-    // it('checks name', () => {
-    //     const pet = new Pet('Fido');
-    //     expect(pet.name).toBe('Fido');
-    // })
+describe('growUp', () => {
+    let pet = new Pet('Monty');
+
+    it('has an initial age of 1', () => {
+        expect(pet.age).toBe(0);
+    })
+
+    it('the pets age can be increased', () => {
+        pet.growUp();
+        expect(pet.age).toBe(1);
+    })
 })
