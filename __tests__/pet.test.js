@@ -8,7 +8,7 @@ describe('constructor', () => {
         expect(pet).toBeInstanceOf(Object);
     })
 
-    it('pet has a name', () => {
+    it('sets the name property', () => {
         expect(pet.name).toEqual('Fido');
     }) 
 })
@@ -16,11 +16,11 @@ describe('constructor', () => {
 describe('growUp', () => {
     let pet = new Pet('Monty');
 
-    it('has an initial age of 1', () => {
+    it('has an initial age of 0', () => {
         expect(pet.age).toBe(0);
     })
 
-    it('the pets age can be increased', () => {
+    it('the pets age can be increased by 1', () => {
         pet.growUp();
         expect(pet.age).toBe(1);
     })
