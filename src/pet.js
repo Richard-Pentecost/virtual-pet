@@ -7,8 +7,16 @@ function Pet(name) {
 
 Pet.prototype.growUp = function() {
     this.age ++;
-    this.hunger += 5;
-    this.fitness -= 3;
+    hungerIncrease = 5;
+    fitnessDecrease = 3;
+    this.hunger += hungerIncrease;
+    this.fitness -= fitnessDecrease;
+}
+
+Pet.prototype.walk = function() {
+    fitnessIncrease = 4;
+    maxFitness = 10;
+    this.fitness + fitnessIncrease > maxFitness ? this.fitness = maxFitness : this.fitness += fitnessIncrease;
 }
 
 module.exports = {

@@ -46,8 +46,30 @@ describe('getting older, getting unhealthier', () => {
         expect(pet.fitness).toBe(10);
     })
 
-    it('when the increments by 1, the fitness decreases by 3', () => {
+    it('when the age increments by 1, the fitness decreases by 3', () => {
         pet.growUp();
         expect(pet.fitness).toBe(7);
     })
+})
+
+describe('Keeping fit', () => {
+    let pet;
+
+    beforeEach(() => {
+        pet = new Pet('Monty');
+        pet.growUp();
+        pet.growUp();
+    });
+
+    it('increases the fitness by 4, when called', () => {
+        const fitness = pet.fitness;
+        pet.walk();
+        expect(pet.fitness).toBe(fitness + 4);
+    });
+
+    it('can\'t increase the ftness level above 10', () => {
+        pet.walk();
+        pet.walk();
+        expect(pet.fitness).toBe(10); 
+    });
 })
