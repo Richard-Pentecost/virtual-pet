@@ -104,16 +104,12 @@ describe('Check Up', () => {
         expect(pet.checkUp()).toBe('I need a walk');
         pet.fitness = 2;
         expect(pet.checkUp()).toBe('I need a walk');
-        pet.fitness = 0;
-        expect(pet.checkUp()).toBe('I need a walk');
     });
 
     it('returns comment about pets hunger if it is greater than or equal to 5', () => {
         pet.hunger = 5;
         expect(pet.checkUp()).toBe('I am hungry');
         pet.hunger = 7;
-        expect(pet.checkUp()).toBe('I am hungry');
-        pet.hunger = 10;
         expect(pet.checkUp()).toBe('I am hungry');
     });
 
@@ -138,19 +134,48 @@ describe('Death', () => {
     it('if fitness is 0 or less, isAlive should be false', () => {
         pet.fitness = 0;
         expect(pet.isAlive).toEqual(false);
-    })
+    });
 
     it('if hunger is 10 or more, isAlive should be false', () => {
         pet.hunger = 10;
         expect(pet.isAlive).toEqual(false);
-    })
+    });
 
     it('if age is 30 or greater, isAlive should be false', () => {
         pet.age = 30;
         expect(pet.isAlive).toEqual(false);
-    })
+    });
 
     it('otherwise, isAlive should be true', () => {
         expect(pet.isAlive).toEqual(true);
-    })
-})
+    });
+});
+
+describe('Guard cases', () => {
+    let pet;
+    const errorMessage = 'You\'re pet is no longer alive :(';
+
+    beforeEach(() => {
+        pet = new Pet('Monty');
+    });
+
+    it('sends an error when growUp is called, but isAlive is false', () => {
+        pet.age = 30;
+        expect(pet.growUp()).toEqual(errorMessage);
+    });
+
+    it('sends an error when walk is called, but isAlive is false', () => {
+        pet.fitness = 0;
+        expect(pet.walk()).toEqual(errorMessage);
+    });
+
+    it('sends an error when feed is called, but isAlive is false', () => {
+        pet.hunger = 10;
+        expect(pet.feed()).toEqual(errorMessage);
+    });
+
+    it('sends an error when checkUp is called, but isAlive is false', () => {
+        pet.hunger = 10;
+        expect(pet.checkUp()).toEqual(errorMessage);
+    });
+});
