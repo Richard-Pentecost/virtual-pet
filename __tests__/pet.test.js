@@ -159,23 +159,23 @@ describe('Guard cases', () => {
         pet = new Pet('Monty');
     });
 
-    it('sends an error when growUp is called, but isAlive is false', () => {
+    it('throws an error when growUp is called, but isAlive is false', () => {
         pet.age = 30;
-        expect(pet.growUp()).toEqual(errorMessage);
+        expect(() => pet.growUp()).toThrow(errorMessage);
     });
 
-    it('sends an error when walk is called, but isAlive is false', () => {
+    it('throws an error when walk is called, but isAlive is false', () => {
         pet.fitness = 0;
-        expect(pet.walk()).toEqual(errorMessage);
+        expect(() => pet.walk()).toThrow(errorMessage);
     });
 
-    it('sends an error when feed is called, but isAlive is false', () => {
+    it('throws an error when feed is called, but isAlive is false', () => {
         pet.hunger = 10;
-        expect(pet.feed()).toEqual(errorMessage);
+        expect(() => pet.feed()).toThrow(errorMessage);
     });
 
-    it('sends an error when checkUp is called, but isAlive is false', () => {
+    it('throws an error when checkUp is called, but isAlive is false', () => {
         pet.hunger = 10;
-        expect(pet.checkUp()).toEqual(errorMessage);
+        expect(() => pet.checkUp()).toThrow(errorMessage);
     });
 });

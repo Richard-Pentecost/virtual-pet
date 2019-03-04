@@ -21,24 +21,24 @@ Pet.prototype = {
 }
 
 Pet.prototype.growUp = function() {
-    if (this.isAlive === false) { return ERROR_MESSAGE };
+    if (!this.isAlive) { throw new Error(ERROR_MESSAGE) };
     this.age ++;
     this.hunger += HUNGER_INCREASE;
     this.fitness -= FITNESS_DECREASE;
 }
 
 Pet.prototype.walk = function() {
-    if (this.isAlive === false) { return ERROR_MESSAGE };
+    if (!this.isAlive) { throw new Error(ERROR_MESSAGE) };
     this.fitness + FITNESS_INCREASE > MAX_FITNESS ? this.fitness = MAX_FITNESS : this.fitness += FITNESS_INCREASE;
 }
 
 Pet.prototype.feed = function() {
-    if (this.isAlive === false) { return ERROR_MESSAGE };
+    if (!this.isAlive) { throw new Error(ERROR_MESSAGE) };
     this.hunger - HUNGER_DECREASE > 0 ? this.hunger -= HUNGER_DECREASE : this.hunger = 0;
 }
 
 Pet.prototype.checkUp = function() {
-    if (this.isAlive === false) { return ERROR_MESSAGE };
+    if (!this.isAlive) { throw new Error(ERROR_MESSAGE) };
     const fitness = this.fitness;
     const hunger = this.hunger;
     if (fitness <= FITNESS_THRESHOLD && hunger >= HUNGER_THRESHOLD) {
