@@ -13,6 +13,12 @@ function Pet(name) {
     this.fitness = MAX_FITNESS;
 }
 
+Pet.prototype = {
+    get isAlive() {
+        return this.hunger < 10 && this.fitness > 0 && this.age < 30;
+    }
+}
+
 Pet.prototype.growUp = function() {
     this.age ++;
     this.hunger += HUNGER_INCREASE;
@@ -32,7 +38,7 @@ Pet.prototype.checkUp = function() {
     const hunger = this.hunger;
     if (fitness <= FITNESS_THRESHOLD && hunger >= HUNGER_THRESHOLD) {
         return 'I am hungry AND I need a walk';
-    }else if(fitness <= FITNESS_THRESHOLD) {
+    } else if (fitness <= FITNESS_THRESHOLD) {
         return 'I need a walk';
     } else if (hunger >= HUNGER_THRESHOLD) {
         return 'I am hungry';

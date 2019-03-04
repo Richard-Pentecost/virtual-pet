@@ -97,7 +97,8 @@ describe('Check Up', () => {
 
     beforeEach(() => {
         pet = new Pet('Monty');
-    })
+    });
+
     it('returns comment asking for a walk, when fitness is 3 or less', () => {
         pet.fitness = 3;
         expect(pet.checkUp()).toBe('I need a walk');
@@ -125,4 +126,31 @@ describe('Check Up', () => {
     it('returns a comment if the fitness is more than 3 and hunger is less than 5', () => {
         expect(pet.checkUp()).toBe('I feel great!');
     });
+});
+
+describe('Death', () => {
+    let pet;
+
+    beforeEach(() => {
+        pet = new Pet('Monty');
+    });
+
+    it('if fitness is 0 or less, isAlive should be false', () => {
+        pet.fitness = 0;
+        expect(pet.isAlive).toEqual(false);
+    })
+
+    it('if hunger is 10 or more, isAlive should be false', () => {
+        pet.hunger = 10;
+        expect(pet.isAlive).toEqual(false);
+    })
+
+    it('if age is 30 or greater, isAlive should be false', () => {
+        pet.age = 30;
+        expect(pet.isAlive).toEqual(false);
+    })
+
+    it('otherwise, isAlive should be true', () => {
+        expect(pet.isAlive).toEqual(true);
+    })
 })
