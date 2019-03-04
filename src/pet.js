@@ -1,39 +1,40 @@
+const MAX_FITNESS = 10;
+const HUNGER_INCREASE = 5;
+const FITNESS_DECREASE = 3;
+const FITNESS_INCREASE = 4;
+const HUNGER_DECREASE = 3;
+const FITNESS_THRESHOLD = 3;
+const HUNGER_THRESHOLD = 5;
+
 function Pet(name) {
     this.name = name;
     this.age = 0;
     this.hunger = 0;
-    this.fitness = 10;
+    this.fitness = MAX_FITNESS;
 }
 
 Pet.prototype.growUp = function() {
-    hungerIncrease = 5;
-    fitnessDecrease = 3;
     this.age ++;
-    this.hunger += hungerIncrease;
-    this.fitness -= fitnessDecrease;
+    this.hunger += HUNGER_INCREASE;
+    this.fitness -= FITNESS_DECREASE;
 }
 
 Pet.prototype.walk = function() {
-    fitnessIncrease = 4;
-    maxFitness = 10;
-    this.fitness + fitnessIncrease > maxFitness ? this.fitness = maxFitness : this.fitness += fitnessIncrease;
+    this.fitness + FITNESS_INCREASE > MAX_FITNESS ? this.fitness = MAX_FITNESS : this.fitness += FITNESS_INCREASE;
 }
 
 Pet.prototype.feed = function() {
-    hungerDecrease = 3;
-    this.hunger - hungerDecrease > 0 ? this.hunger -= hungerDecrease : this.hunger = 0;
+    this.hunger - HUNGER_DECREASE > 0 ? this.hunger -= HUNGER_DECREASE : this.hunger = 0;
 }
 
 Pet.prototype.checkUp = function() {
-    const fitnessThreshold = 3;
-    const hungerThreshold = 5;
     const fitness = this.fitness;
     const hunger = this.hunger;
-    if (fitness <= fitnessThreshold && hunger >= hungerThreshold) {
+    if (fitness <= FITNESS_THRESHOLD && hunger >= HUNGER_THRESHOLD) {
         return 'I am hungry AND I need a walk';
-    }else if(fitness <= fitnessThreshold) {
+    }else if(fitness <= FITNESS_THRESHOLD) {
         return 'I need a walk';
-    } else if (hunger >= hungerThreshold) {
+    } else if (hunger >= HUNGER_THRESHOLD) {
         return 'I am hungry';
     } else {
         return 'I feel great!';
