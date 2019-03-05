@@ -179,3 +179,51 @@ describe('Guard cases', () => {
         expect(() => pet.checkUp()).toThrow(errorMessage);
     });
 });
+
+describe('Adopting a child', () => {
+    let parent;
+    let child;
+
+    beforeEach(() => {
+        parent = new Pet('Tusker');
+        child = new Pet('Monty');
+        parent.adoptChild(child);
+    });
+    
+    it('parent adopts a child and object found in children array', () => {
+        expect(parent.children[0]).toBeInstanceOf(Object);
+    });
+
+    it('checks that the child is the same as the children[0]', () => {
+        expect(parent.children[0]).toEqual(child);
+    });
+
+    it('can be fed through parent pet', () => {
+        parent.children[0].hunger = 5;
+        parent.children[0].feed();
+        expect(parent.children[0].hunger).toEqual(2);
+    });
+
+    it('can be walked through the child pet', () => {
+        child.fitness = 7;
+        child.walk();
+        expect(child.fitness).toEqual(10);
+    });
+});
+
+describe('Having a baby', () => {
+    let parent;
+
+    beforeEach(() => {
+        parent = new Pet('Tusker');
+        parent.haveBaby('Monty');
+    });
+    
+    it('has a pet instance in the children array', () => {
+        expect(parent.children[0]).toBeInstanceOf(Pet);
+    });
+
+    it('new instance of Pet has correct name', () => {
+        expect(parent.children[0].name).toEqual('Monty');
+    });
+});
