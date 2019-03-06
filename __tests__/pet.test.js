@@ -52,6 +52,8 @@ describe('getting older, getting unhealthier', () => {
     });
 });
 
+// good use of the beforeEach, you could wrap these describe blocks in 
+// another describe block and just use one beforeEach.
 describe('Keeping fit', () => {
     let pet;
 
