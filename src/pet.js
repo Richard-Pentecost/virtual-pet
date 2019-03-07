@@ -28,6 +28,7 @@ Pet.prototype = {
 
 Pet.prototype.growUp = function() {
     if (!this.isAlive) { throw new Error(ERROR_MESSAGE); }
+    // ++ works, but we encourage you to use += 1. It's easier to see what is happening.
     this.age ++;
     this.hunger += HUNGER_INCREASE;
     this.fitness -= FITNESS_DECREASE;
