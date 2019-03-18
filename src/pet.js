@@ -10,7 +10,7 @@ const HUNGER_THRESHOLD = 5;
 
 const MAX_AGE = 30;
 
-const ERROR_MESSAGE = 'You\'re pet is no longer alive :(';
+const ERROR_MESSAGE = 'Your pet is no longer alive :(';
 
 class Pet {
     constructor(name) {
@@ -29,9 +29,9 @@ class Pet {
         if (!this.isAlive) {
             throw new Error(ERROR_MESSAGE);
         }
-    this.age ++;
-    this.hunger += HUNGER_INCREASE;
-    this.fitness -= FITNESS_DECREASE;
+        this.age += 1;
+        this.hunger += HUNGER_INCREASE;
+        this.fitness -= FITNESS_DECREASE;
     }
     
     walk() {
